@@ -1,3 +1,5 @@
+import fetch from "node-fetch";
+
 export default async function handler(req, res) {
     try {
         const movieResponse = await fetch("https://other-movie-service.com/random");
@@ -13,6 +15,8 @@ export default async function handler(req, res) {
             precio: priceData.price
         });
     } catch (error) {
+        console.error(error);
         res.status(500).json({ error: "Error fetching movie and price" });
     }
 }
+
